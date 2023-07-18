@@ -1,0 +1,10 @@
+{
+  "name": "Test First Chrome Extension",
+  "description": "Shows a menu item",
+  "version": "0.0.1",
+  "permissions": ["contextMenus", "activeTab"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 2
+}
