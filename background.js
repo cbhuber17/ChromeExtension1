@@ -20,11 +20,9 @@ chrome.contextMenus.create({
   onclick: myImageClick,
 });
 
-function sendResponse() {
-  console.log("Response sent.");
-}
-
-// Allow this background script to receive
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) =>
-  console.log("message", msg)
-);
+// Allow this background script to receive messages from index.js
+chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
+  console.log("request", req);
+  console.log("sender", sender);
+  sendResponse("<OK");
+});

@@ -5,18 +5,17 @@ let links = document.getElementsByTagName("a");
 let formatted_links = [];
 
 for (let i = 0; i < links.length; i++) {
-  let title = links[i].text;
+  // Remove carriage returns and spaces
+  let title = links[i].text.replace(/\s{2,10}/g, " ").trim();
   let href = links[i].href;
 
-  if (!title && !href) {
+  if (title !== "" && href != "") {
     formatted_links.push({ title, href });
   }
 }
-console.log(formatted_links);
 
 // Send links to background script
 // Chrome runtime API
-chrome.runtime.sendMessage(
-  { action: "print_messages", data: formatted_links },
-  (res) => console.log(res)
-);
+chrome.runtime.sendMessage(formatted_links, function (response) {
+  console.log(response);
+});
