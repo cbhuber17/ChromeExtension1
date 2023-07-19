@@ -6,5 +6,11 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "content_scripts": [
+    {
+      "matches": ["*://www.google.com/*", "*://www.youtube.com/*"],
+      "js": ["index.js"]
+    }
+  ],
   "manifest_version": 2
 }
