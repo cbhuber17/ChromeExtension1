@@ -16,6 +16,4 @@ for (let i = 0; i < links.length; i++) {
 
 // Send links to background script
 // Chrome runtime API
-chrome.runtime.sendMessage(formatted_links, function (response) {
-  console.log(response);
-});
+chrome.runtime.sendMessage(formatted_links, (res) => console.log(res));

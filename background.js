@@ -6,14 +6,13 @@ function myGenericClick(info, tab) {
 
 function myImageClick(info, tab) {
   console.log("Clicked an image", info, tab);
+  chrome.windows.create({
+    url: "https://www.facebook.com/sharer.php?u=" + info.srcUrl,
+    type: "popup",
+  });
 }
 
-chrome.contextMenus.create({
-  title: "Share",
-  onclick: myGenericClick,
-  contexts: ["page"],
-});
-
+// Right click added option
 chrome.contextMenus.create({
   title: "Share Image",
   contexts: ["image"],
